@@ -1,0 +1,388 @@
+/* Reset some default browser spacing so we start clean */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1F4E79;
+    padding: 15px 40px;
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.nav-links a:hover {
+    color: #FFA500;
+}
+
+nav {
+    transition: all 0.3s ease;
+}
+
+.nav-links a {
+    transition: color 0.3s ease;
+}
+
+.hero {
+    height: 90vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=1600') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content {
+    max-width: 700px;
+    padding: 20px;
+}
+
+.hero h5 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    color: #FFA500;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: #FFA500;
+    color: white;
+    text-decoration: none;
+    padding: 15px 35px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #e69500;
+}
+
+.why-us {
+    padding: 80px 40px;
+    text-align: center;
+}
+
+.why-us-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.why-us h6 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #FFA500;
+    margin-bottom: 10px;
+}
+
+.why-us h2 {
+    font-size: 34px;
+    margin-bottom: 15px;
+}
+
+.why-us p {
+    color: #555;
+    margin-bottom: 40px;
+}
+
+.checklist {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.check-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f2f6fa;
+    padding: 15px 20px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.check-item:hover {
+    transform: translateY(-5px);
+}
+
+.check-item span {
+    color: #1F4E79;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.services {
+    padding: 80px 40px;
+    background: #f9fafb;
+    text-align: center;
+}
+
+.services-header {
+    margin-bottom: 50px;
+}
+
+.services-header h6 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #FFA500;
+    margin-bottom: 10px;
+}
+
+.services-header h2 {
+    font-size: 34px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background: white;
+    padding: 40px 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.service-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.service-card h3 {
+    margin-bottom: 10px;
+    color: #1F4E79;
+}
+
+.service-card p {
+    color: #666;
+    font-size: 14px;
+}
+
+.post-job {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    padding: 80px 40px;
+    background: #1F4E79;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+.post-job-text {
+    flex: 1;
+    min-width: 280px;
+    max-width: 400px;
+}
+
+.post-job-text h6 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #FFA500;
+    margin-bottom: 10px;
+}
+
+.post-job-text h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.post-job-form {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.post-job-form input,
+.post-job-form select,
+.post-job-form textarea {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    background: rgba(255,255,255,0.95);
+}
+
+.post-job-form textarea {
+    width: 100%;
+    margin-bottom: 15px;
+    resize: vertical;
+}
+
+.post-job-form button {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.footer {
+    background: #14304f;
+    color: white;
+    padding: 60px 40px 0 40px;
+}
+
+.footer-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 220px;
+}
+
+.footer-col h3 {
+    margin-bottom: 10px;
+    color: #FFA500;
+}
+
+.footer-col h4 {
+    margin-bottom: 15px;
+}
+
+.footer-col p {
+    color: #cfd8e3;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.footer-col a {
+    display: block;
+    color: #cfd8e3;
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-col a:hover {
+    color: #FFA500;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 13px;
+    color: #a8b7c9;
+}
+
+.testimonials {
+    padding: 80px 40px;
+    text-align: center;
+}
+
+.testimonials-header {
+    margin-bottom: 50px;
+}
+
+.testimonials-header h6 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #FFA500;
+    margin-bottom: 10px;
+}
+
+.testimonials-header h2 {
+    font-size: 34px;
+}
+
+.testimonials-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    background: #f9fafb;
+    padding: 35px 25px;
+    border-radius: 10px;
+    max-width: 320px;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-8px);
+}
+
+.testimonial-card p {
+    color: #444;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.testimonial-author h4 {
+    color: #1F4E79;
+    margin-bottom: 3px;
+}
+
+.testimonial-author span {
+    color: #888;
+    font-size: 13px;
+}
