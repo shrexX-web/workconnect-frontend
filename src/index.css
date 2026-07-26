@@ -386,3 +386,255 @@ nav {
     color: #888;
     font-size: 13px;
 }
+
+.about-page {
+    padding: 100px 40px 80px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-header h6 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #FFA500;
+    margin-bottom: 10px;
+}
+
+.about-header h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #1F4E79;
+}
+
+.about-header p {
+    max-width: 650px;
+    margin: 0 auto;
+    color: #555;
+    font-size: 17px;
+}
+
+.about-mission {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+    align-items: center;
+    margin-top: 70px;
+    text-align: left;
+}
+
+.mission-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.mission-text h6 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #FFA500;
+    margin-bottom: 10px;
+}
+
+.mission-text h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+    color: #1F4E79;
+}
+
+.mission-text p {
+    color: #555;
+}
+
+.mission-stats {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.stat-box {
+    background: #f2f6fa;
+    padding: 30px 20px;
+    border-radius: 10px;
+    flex: 1;
+    min-width: 140px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-6px);
+}
+
+.stat-box h1 {
+    color: #1F4E79;
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.stat-box p {
+    color: #666;
+    font-size: 14px;
+}
+
+.services-page {
+    padding: 100px 40px 80px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.services-page-header h6 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #FFA500;
+    margin-bottom: 10px;
+}
+
+.services-page-header h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #1F4E79;
+}
+
+.services-page-header p {
+    max-width: 600px;
+    margin: 0 auto 50px auto;
+    color: #555;
+    font-size: 17px;
+}
+
+.services-page-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.service-page-card {
+    background: #f9fafb;
+    padding: 35px 20px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-page-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.service-page-card .service-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.service-page-card h3 {
+    color: #1F4E79;
+    margin-bottom: 10px;
+}
+
+.service-page-card p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.service-link {
+    color: #FFA500;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.service-link:hover {
+    color: #e69500;
+}
+
+.contact-page {
+    padding: 100px 40px 80px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.contact-header h6 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #FFA500;
+    margin-bottom: 10px;
+}
+
+.contact-header h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #1F4E79;
+}
+
+.contact-header p {
+    max-width: 600px;
+    margin: 0 auto;
+    color: #555;
+}
+
+.contact-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.info-item {
+    background: #f2f6fa;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.info-item h4 {
+    color: #1F4E79;
+    margin-bottom: 8px;
+}
+
+.info-item p {
+    color: #555;
+    font-size: 14px;
+}
+
+.contact-form {
+    flex: 2;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form .form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    width: 100%;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
