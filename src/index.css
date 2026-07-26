@@ -638,3 +638,83 @@ nav {
 .contact-form textarea {
     resize: vertical;
 }
+
+@media (max-width: 768px) {
+
+    nav {
+        flex-direction: column;
+        padding: 15px 20px;
+        gap: 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .why-us-content, 
+    .services-header,
+    .testimonials-header {
+        padding: 0 10px;
+    }
+
+    .checklist {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .services-grid,
+    .services-page-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .post-job {
+        flex-direction: column;
+        text-align: center;
+        padding: 50px 20px;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .testimonials-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .testimonial-card {
+        max-width: 100%;
+    }
+
+    .footer-grid {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-mission {
+        flex-direction: column;
+    }
+
+    .mission-stats {
+        flex-direction: column;
+    }
+
+    .contact-grid {
+        flex-direction: column;
+    }
+
+    .contact-form .form-row {
+        flex-direction: column;
+    }
+
+}
