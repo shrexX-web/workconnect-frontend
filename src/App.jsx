@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import Partner from './components/Partner';
 import WhyUs from './components/WhyUs';
 import Services from './components/Services';
 import PostJob from './components/PostJob';
@@ -31,6 +32,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/partner" element={<Partner />} />
       </Routes>
       <Footer />
     </div>

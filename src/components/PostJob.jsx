@@ -1,6 +1,6 @@
 function PostJob() {
     return (
-      <section className="post-job">
+      <section className="post-job" id="post-job">
         <div className="post-job-text">
           <h6>Get Started</h6>
           <h2>Post Your Job In Seconds</h2>

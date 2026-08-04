@@ -718,3 +718,131 @@ nav {
     }
 
 }
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.btn-secondary {
+    display: inline-block;
+    background-color: transparent;
+    color: white;
+    text-decoration: none;
+    padding: 15px 35px;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 2px solid white;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: white;
+    color: #1F4E79;
+}
+
+.partner-page {
+    padding: 0;
+}
+
+.partner-hero {
+    background: linear-gradient(rgba(31,78,121,0.9), rgba(31,78,121,0.9)), url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1600') center/cover no-repeat;
+    color: white;
+    text-align: center;
+    padding: 100px 40px;
+}
+
+.partner-hero h6 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #FFA500;
+    margin-bottom: 15px;
+}
+
+.partner-hero h1 {
+    font-size: 40px;
+    max-width: 700px;
+    margin: 0 auto 20px auto;
+}
+
+.partner-hero p {
+    max-width: 550px;
+    margin: 0 auto;
+    font-size: 16px;
+}
+
+.partner-benefits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    padding: 70px 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.benefit-box {
+    background: #f9fafb;
+    padding: 35px 25px;
+    border-radius: 10px;
+    text-align: center;
+    flex: 1;
+    min-width: 220px;
+    transition: transform 0.3s ease;
+}
+
+.benefit-box:hover {
+    transform: translateY(-6px);
+}
+
+.benefit-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.benefit-box h3 {
+    color: #1F4E79;
+    margin-bottom: 10px;
+}
+
+.benefit-box p {
+    color: #666;
+    font-size: 14px;
+}
+
+.partner-signup {
+    background: #1F4E79;
+    padding: 70px 40px;
+    text-align: center;
+    color: white;
+}
+
+.partner-signup h2 {
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+.partner-signup form {
+    max-width: 450px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.partner-signup input,
+.partner-signup select {
+    padding: 14px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+}
+
+.partner-success h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
