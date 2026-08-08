@@ -1,11 +1,31 @@
 import { useState } from 'react';
+import axios from 'axios';
 
 function Partner() {
-  const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    service: '',
+    area: '',
+  });
 
-  function handleSubmit(e) {
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(false);
+
+  function handleChange(e) {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  }
+
+  async function handleSubmit(e) {
     e.preventDefault();
-    setSubmitted(true);
+    try {
+      await axios.post('https://workconnect-backend.onrender.com/api/workers', formData);
+      setSubmitted(true);
+      setError(false);
+    } catch (err) {
+      console.error(err);
+      setError(true);
+    }
   }
 
   return (
@@ -39,9 +59,9 @@ function Partner() {
           <>
             <h2>Register in 30 Seconds</h2>
             <form onSubmit={handleSubmit}>
-              <input type="text" placeholder="Your Full Name" required />
-              <input type="tel" placeholder="Your Phone Number" required />
-              <select required defaultValue="">
+              <input type="text" name="name" placeholder="Your Full Name" value={formData.name} onChange={handleChange} required />
+              <input type="tel" name="phone" placeholder="Your Phone Number" value={formData.phone} onChange={handleChange} required />
+              <select name="service" value={formData.service} onChange={handleChange} required>
                 <option value="" disabled>What service do you provide?</option>
                 <option value="plumbing">Plumbing</option>
                 <option value="electrical">Electrical</option>
@@ -50,8 +70,9 @@ function Partner() {
                 <option value="cleaning">Cleaning</option>
                 <option value="ac-repair">AC Repair</option>
               </select>
-              <input type="text" placeholder="Your Area / Locality" required />
+              <input type="text" name="area" placeholder="Your Area / Locality" value={formData.area} onChange={handleChange} required />
               <button type="submit" className="btn-primary">Register Now</button>
+              {error && <p className="form-error">Something went wrong. Please try again.</p>}
             </form>
           </>
         ) : (

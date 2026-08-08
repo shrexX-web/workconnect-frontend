@@ -20,7 +20,7 @@ function PostJob() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/jobs', formData);
+      await axios.post('https://workconnect-backend.onrender.com/api/jobs', formData);
       setSubmitted(true);
       setError(false);
     } catch (err) {
