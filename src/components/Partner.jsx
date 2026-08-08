@@ -19,7 +19,7 @@ function Partner() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      await axios.post('https://workconnect-backend.onrender.com/api/workers', formData);
+      await axios.post('https://workconnect-backend-i80m.onrender.com/api/workers', formData);
       setSubmitted(true);
       setError(false);
     } catch (err) {
