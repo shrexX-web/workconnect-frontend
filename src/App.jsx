@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import About from './components/About';
 import ServicesPage from './components/ServicesPage';
 import Contact from './components/Contact';
+import Community from './components/Community';
 
 function Home() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/partner" element={<Partner />} />
+        <Route path="/community" element={<Community />} />
       </Routes>
       <Footer />
     </div>

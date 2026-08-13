@@ -863,3 +863,144 @@ nav {
     font-size: 14px;
     margin-top: 10px;
 }
+
+.visibility-toggle {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 5px;
+}
+
+.visibility-toggle label {
+    flex: 1;
+    text-align: center;
+    padding: 12px;
+    border-radius: 5px;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.visibility-toggle label.active {
+    background: white;
+    color: #1F4E79;
+    border-color: #FFA500;
+    font-weight: bold;
+}
+
+.visibility-toggle input {
+    display: none;
+}
+
+.community-page {
+    padding: 100px 40px 80px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.community-header h6 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #FFA500;
+    margin-bottom: 10px;
+}
+
+.community-header h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #1F4E79;
+}
+
+.community-header p {
+    max-width: 600px;
+    margin: 0 auto 50px auto;
+    color: #555;
+}
+
+.community-loading, .community-empty {
+    color: #777;
+    padding: 40px;
+}
+
+.community-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    text-align: left;
+}
+
+.community-card {
+    background: #f9fafb;
+    padding: 25px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.community-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.community-service-tag {
+    background: #1F4E79;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.community-status {
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+.status-open {
+    background: #e6f4ea;
+    color: #1e7e34;
+}
+
+.status-claimed {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.community-description {
+    color: #333;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.community-poster {
+    color: #888;
+    font-size: 13px;
+}
+
+.community-claimed {
+    color: #1F4E79;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.claim-input-row {
+    display: flex;
+    gap: 8px;
+}
+
+.claim-input-row input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 13px;
+}

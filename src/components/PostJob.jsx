@@ -8,6 +8,7 @@ function PostJob() {
     phone: '',
     service: '',
     description: '',
+    visibility: 'private',
   });
 
   const [submitted, setSubmitted] = useState(false);
@@ -61,6 +62,28 @@ function PostJob() {
               </select>
             </div>
             <textarea name="description" placeholder="Describe your job..." rows="4" value={formData.description} onChange={handleChange}></textarea>
+            <div className="visibility-toggle">
+              <label className={formData.visibility === 'private' ? 'active' : ''}>
+                <input
+                  type="radio"
+                  name="visibility"
+                  value="private"
+                  checked={formData.visibility === 'private'}
+                  onChange={handleChange}
+                />
+                Keep Private
+              </label>
+              <label className={formData.visibility === 'public' ? 'active' : ''}>
+                <input
+                  type="radio"
+                  name="visibility"
+                  value="public"
+                  checked={formData.visibility === 'public'}
+                  onChange={handleChange}
+                />
+                Share with Community
+              </label>
+            </div>
             <button type="submit" className="btn-primary">Post Job</button>
             {error && <p className="form-error">Something went wrong. Please try again.</p>}
           </form>
