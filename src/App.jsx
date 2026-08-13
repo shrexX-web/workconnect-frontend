@@ -11,6 +11,7 @@ import About from './components/About';
 import ServicesPage from './components/ServicesPage';
 import Contact from './components/Contact';
 import Community from './components/Community';
+import Admin from './components/Admin';
 
 function Home() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/partner" element={<Partner />} />
         <Route path="/community" element={<Community />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
       <Footer />
     </div>
