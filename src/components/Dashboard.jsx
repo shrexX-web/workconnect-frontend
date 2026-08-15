@@ -7,8 +7,11 @@ function Dashboard() {
   const [otpInput, setOtpInput] = useState('');
   const [simulatedOtp, setSimulatedOtp] = useState('');
   const [error, setError] = useState('');
-  const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [worker, setWorker] = useState(null);
+  const [availableJobs, setAvailableJobs] = useState([]);
+  const [claimedJobs, setClaimedJobs] = useState([]);
+  const [activeTab, setActiveTab] = useState('available');
 
   async function handleSendOtp(e) {
     e.preventDefault();
@@ -31,7 +34,9 @@ function Dashboard() {
     setLoading(true);
     try {
       await axios.post('https://workconnect-backend-i80m.onrender.com/api/otp/verify', { phone, otp: otpInput });
-      fetchJobs();
+      const workerRes = await axios.get(`https://workconnect-backend-i80m.onrender.com/api/workers/phone/${phone}`);
+      setWorker(workerRes.data);
+      await loadJobs(workerRes.data.service);
       setStep('dashboard');
     } catch (err) {
       setError(err.response?.data?.error || 'Incorrect OTP');
@@ -40,19 +45,37 @@ function Dashboard() {
     }
   }
 
-  async function fetchJobs() {
+  async function loadJobs(service) {
     try {
-      const res = await axios.get(`https://workconnect-backend-i80m.onrender.com/api/jobs/claimed/${phone}`);
-      setJobs(res.data);
+      const [availableRes, claimedRes] = await Promise.all([
+        axios.get(`https://workconnect-backend-i80m.onrender.com/api/jobs/available/${service}`),
+        axios.get(`https://workconnect-backend-i80m.onrender.com/api/jobs/claimed/${phone}`),
+      ]);
+      setAvailableJobs(availableRes.data);
+      setClaimedJobs(claimedRes.data);
     } catch (err) {
       console.error(err);
+    }
+  }
+
+  async function handleClaim(jobId) {
+    try {
+      await axios.patch(`https://workconnect-backend-i80m.onrender.com/api/jobs/${jobId}/claim`, {
+        workerName: worker.name,
+        workerPhone: phone,
+      });
+      await loadJobs(worker.service);
+      setActiveTab('claimed');
+    } catch (err) {
+      alert(err.response?.data?.error || 'Failed to claim job');
+      loadJobs(worker.service);
     }
   }
 
   async function markComplete(jobId) {
     try {
       await axios.patch(`https://workconnect-backend-i80m.onrender.com/api/jobs/${jobId}/complete`);
-      setJobs(jobs.map(j => j._id === jobId ? { ...j, status: 'completed' } : j));
+      setClaimedJobs(claimedJobs.map(j => j._id === jobId ? { ...j, status: 'completed' } : j));
     } catch (err) {
       console.error(err);
     }
@@ -112,28 +135,57 @@ function Dashboard() {
   return (
     <section className="dashboard-page">
       <div className="dashboard-header">
-        <h6>Worker Dashboard</h6>
-        <h1>Your Claimed Jobs</h1>
+        <h6>Welcome, {worker.name}</h6>
+        <h1>{worker.service.charAt(0).toUpperCase() + worker.service.slice(1)} Jobs</h1>
       </div>
 
-      {jobs.length === 0 ? (
-        <p className="dashboard-empty">No claimed jobs yet. Check the Community board to volunteer for one.</p>
-      ) : (
-        <div className="dashboard-grid">
-          {jobs.map((job) => (
-            <div className="dashboard-card" key={job._id}>
-              <div className="dashboard-card-top">
-                <span className="community-service-tag">{job.service}</span>
-                <span className={`admin-tag tag-${job.status}`}>{job.status}</span>
+      <div className="admin-tabs" style={{ justifyContent: 'center' }}>
+        <button className={activeTab === 'available' ? 'active' : ''} onClick={() => setActiveTab('available')}>
+          Available ({availableJobs.length})
+        </button>
+        <button className={activeTab === 'claimed' ? 'active' : ''} onClick={() => setActiveTab('claimed')}>
+          Your Jobs ({claimedJobs.length})
+        </button>
+      </div>
+
+      {activeTab === 'available' ? (
+        availableJobs.length === 0 ? (
+          <p className="dashboard-empty">No open {worker.service} jobs right now. Check back soon.</p>
+        ) : (
+          <div className="dashboard-grid">
+            {availableJobs.map((job) => (
+              <div className="dashboard-card" key={job._id}>
+                <div className="dashboard-card-top">
+                  <span className="community-service-tag">{job.service}</span>
+                  <span className="admin-tag tag-open">open</span>
+                </div>
+                <p className="community-description">{job.description}</p>
+                <p className="community-poster">Posted by {job.name}</p>
+                <button onClick={() => handleClaim(job._id)} className="btn-primary">Claim This Job</button>
               </div>
-              <p className="community-description">{job.description}</p>
-              <p className="community-poster">Customer: {job.name} · {job.phone}</p>
-              {job.status === 'claimed' && (
-                <button onClick={() => markComplete(job._id)} className="btn-primary">Mark Complete</button>
-              )}
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )
+      ) : (
+        claimedJobs.length === 0 ? (
+          <p className="dashboard-empty">You haven't claimed any jobs yet.</p>
+        ) : (
+          <div className="dashboard-grid">
+            {claimedJobs.map((job) => (
+              <div className="dashboard-card" key={job._id}>
+                <div className="dashboard-card-top">
+                  <span className="community-service-tag">{job.service}</span>
+                  <span className={`admin-tag tag-${job.status}`}>{job.status}</span>
+                </div>
+                <p className="community-description">{job.description}</p>
+                <p className="community-poster">Customer: {job.name} · {job.phone}</p>
+                {job.status === 'claimed' && (
+                  <button onClick={() => markComplete(job._id)} className="btn-primary">Mark Complete</button>
+                )}
+              </div>
+            ))}
+          </div>
+        )
       )}
     </section>
   );
