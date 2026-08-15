@@ -1146,3 +1146,178 @@ nav {
     padding: 40px;
     color: var(--color-text-muted);
 }
+
+.dashboard-page {
+    padding: 100px 40px 80px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.dashboard-header h6 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-accent);
+    margin-bottom: 10px;
+}
+
+.dashboard-header h1 {
+    font-size: 40px;
+    margin-bottom: 15px;
+    color: var(--color-slate);
+}
+
+.dashboard-header p {
+    color: var(--color-text-muted);
+    margin-bottom: 30px;
+}
+
+.dashboard-search {
+    display: flex;
+    gap: 10px;
+    max-width: 400px;
+    margin: 0 auto 50px auto;
+}
+
+.dashboard-search input {
+    flex: 1;
+    padding: 14px;
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+}
+
+.dashboard-loading, .dashboard-empty {
+    color: var(--color-text-muted);
+    padding: 40px;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    text-align: left;
+}
+
+.dashboard-card {
+    background: var(--color-surface);
+    padding: 25px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.dashboard-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.workerlist-page {
+    padding: 100px 40px 80px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.workerlist-header h6 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-accent);
+    margin-bottom: 10px;
+}
+
+.workerlist-header h1 {
+    font-size: 36px;
+    color: var(--color-slate);
+    margin-bottom: 15px;
+}
+
+.workerlist-header p {
+    color: var(--color-text-muted);
+    max-width: 500px;
+    margin: 0 auto 20px auto;
+}
+
+.btn-secondary-dark {
+    display: inline-block;
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 40px;
+}
+
+.workerlist-loading, .workerlist-empty {
+    color: var(--color-text-muted);
+    padding: 40px;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.workerlist-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.workerlist-card {
+    background: var(--color-surface);
+    padding: 30px 20px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.workerlist-card:hover {
+    transform: translateY(-6px);
+}
+
+.workerlist-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px auto;
+}
+
+.workerlist-card h3 {
+    color: var(--color-slate);
+    margin-bottom: 6px;
+}
+
+.workerlist-area {
+    color: var(--color-text-muted);
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.admin-add-worker {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.admin-add-worker input {
+    flex: 1;
+    min-width: 150px;
+    padding: 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+}
+
+.otp-demo-note {
+    background: #fef3c7;
+    color: #92400e;
+    padding: 12px 20px;
+    border-radius: 8px;
+    display: inline-block;
+    font-size: 14px;
+}

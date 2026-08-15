@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Partner from './components/Partner';
 import WhyUs from './components/WhyUs';
 import Services from './components/Services';
 import PostJob from './components/PostJob';
@@ -10,8 +9,11 @@ import Footer from './components/Footer';
 import About from './components/About';
 import ServicesPage from './components/ServicesPage';
 import Contact from './components/Contact';
+import Partner from './components/Partner';
 import Community from './components/Community';
 import Admin from './components/Admin';
+import Dashboard from './components/Dashboard';
+import WorkerList from './components/WorkerList';
 
 function Home() {
   return (
@@ -37,6 +39,8 @@ function App() {
         <Route path="/partner" element={<Partner />} />
         <Route path="/community" element={<Community />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/workers/:service" element={<WorkerList />} />
       </Routes>
       <Footer />
     </div>

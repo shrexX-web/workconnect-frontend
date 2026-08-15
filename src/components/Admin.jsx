@@ -10,6 +10,7 @@ function Admin() {
   const [workers, setWorkers] = useState([]);
   const [activeTab, setActiveTab] = useState('jobs');
   const [loading, setLoading] = useState(false);
+  const [newWorker, setNewWorker] = useState({ name: '', phone: '', service: '', area: '' });
 
   function handleLogin(e) {
     e.preventDefault();
@@ -39,6 +40,17 @@ function Admin() {
       console.error(err);
     } finally {
       setLoading(false);
+    }
+  }
+
+  async function handleAddWorker(e) {
+    e.preventDefault();
+    try {
+      await axios.post('https://workconnect-backend-i80m.onrender.com/api/workers', newWorker);
+      setNewWorker({ name: '', phone: '', service: '', area: '' });
+      fetchData();
+    } catch (err) {
+      alert('Failed to add worker');
     }
   }
 
@@ -115,6 +127,13 @@ function Admin() {
         </div>
       ) : (
         <div className="admin-table-wrap">
+          <form onSubmit={handleAddWorker} className="admin-add-worker">
+            <input type="text" placeholder="Name" value={newWorker.name} onChange={(e) => setNewWorker({ ...newWorker, name: e.target.value })} required />
+            <input type="tel" placeholder="Phone" value={newWorker.phone} onChange={(e) => setNewWorker({ ...newWorker, phone: e.target.value })} required />
+            <input type="text" placeholder="Service (e.g. plumbing)" value={newWorker.service} onChange={(e) => setNewWorker({ ...newWorker, service: e.target.value })} required />
+            <input type="text" placeholder="Area" value={newWorker.area} onChange={(e) => setNewWorker({ ...newWorker, area: e.target.value })} required />
+            <button type="submit" className="btn-primary">Add Worker</button>
+          </form>
           <table className="admin-table">
             <thead>
               <tr>

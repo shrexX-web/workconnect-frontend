@@ -6,6 +6,7 @@ function Community() {
   const [loading, setLoading] = useState(true);
   const [claimingId, setClaimingId] = useState(null);
   const [workerName, setWorkerName] = useState('');
+  const [workerPhone, setWorkerPhone] = useState('');
 
   useEffect(() => {
     fetchJobs();
@@ -23,13 +24,14 @@ function Community() {
   }
 
   async function handleClaim(jobId) {
-    if (!workerName.trim()) {
-      alert('Please enter your name first');
+    if (!workerName.trim() || !workerPhone.trim()) {
+      alert('Please enter your name and phone number');
       return;
     }
     try {
       await axios.patch(`https://workconnect-backend-i80m.onrender.com/api/jobs/${jobId}/claim`, {
         workerName: workerName,
+        workerPhone: workerPhone,
       });
       fetchJobs();
       setClaimingId(null);
@@ -71,6 +73,12 @@ function Community() {
                       placeholder="Your name"
                       value={workerName}
                       onChange={(e) => setWorkerName(e.target.value)}
+                    />
+                    <input
+                      type="tel"
+                      placeholder="Your phone"
+                      value={workerPhone}
+                      onChange={(e) => setWorkerPhone(e.target.value)}
                     />
                     <button onClick={() => handleClaim(job._id)} className="btn-primary">Confirm</button>
                   </div>
