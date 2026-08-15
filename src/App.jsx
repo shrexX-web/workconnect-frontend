@@ -14,6 +14,7 @@ import Community from './components/Community';
 import Admin from './components/Admin';
 import Dashboard from './components/Dashboard';
 import WorkerList from './components/WorkerList';
+import CustomerLogin from './components/CustomerLogin';
 
 function Home() {
   return (
@@ -41,6 +42,7 @@ function App() {
         <Route path="/admin" element={<Admin />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/workers/:service" element={<WorkerList />} />
+        <Route path="/my-account" element={<CustomerLogin />} />
       </Routes>
       <Footer />
     </div>

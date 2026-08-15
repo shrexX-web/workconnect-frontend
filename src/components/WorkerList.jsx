@@ -45,8 +45,13 @@ function WorkerList() {
               <div className="workerlist-avatar">{worker.name.charAt(0)}</div>
               <h3>{worker.name}</h3>
               <p className="workerlist-area">📍 {worker.area}</p>
+              {worker.avgRating ? (
+                <p className="workerlist-rating">⭐ {worker.avgRating} ({worker.reviewCount} reviews)</p>
+              ) : (
+                <p className="workerlist-rating-none">No reviews yet</p>
+              )}
               <a href={`tel:${worker.phone}`} className="btn-primary">Call for Quote</a>
-            </div>
+            </div>    
           ))}
         </div>
       )}

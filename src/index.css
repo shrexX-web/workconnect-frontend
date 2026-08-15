@@ -1321,3 +1321,61 @@ nav {
     display: inline-block;
     font-size: 14px;
 }
+
+.workerlist-rating {
+    color: #b45309;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.workerlist-rating-none {
+    color: var(--color-text-muted);
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.review-form {
+    max-width: 450px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.review-form input,
+.review-form textarea {
+    padding: 14px;
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+}
+
+.star-select {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    font-size: 32px;
+}
+
+.star {
+    color: #d1d5db;
+    cursor: pointer;
+}
+
+.star.active {
+    color: #f59e0b;
+}
+
+.inline-review {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.inline-review textarea {
+    padding: 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 5px;
+    font-family: 'Inter', sans-serif;
+    resize: vertical;
+}

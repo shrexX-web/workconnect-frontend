@@ -10,6 +10,7 @@ function Navbar() {
         <li><Link to="/services">Services</Link></li>
         <li><Link to="/community">Community</Link></li>
         <li><Link to="/contact">Contact</Link></li>
+        <li><Link to="/my-account">My Jobs</Link></li>
         <li><Link to="/dashboard">Worker Login</Link></li>
       </ul>
     </nav>
