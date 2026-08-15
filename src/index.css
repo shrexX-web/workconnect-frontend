@@ -1445,6 +1445,7 @@ nav {
     background: none;
     border: none;
     cursor: pointer;
+    
     font-size: 14px;
     color: var(--color-text-muted);
     font-weight: 600;
@@ -1503,4 +1504,22 @@ nav {
 
 .comment-form input:last-of-type {
     flex: 1;
+}
+
+.admin-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.admin-action-link {
+    background: none;
+    border: none;
+    color: var(--color-accent);
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.admin-action-link.danger {
+    color: #dc2626;
 }
