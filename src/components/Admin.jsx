@@ -1,47 +1,85 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
-const ADMIN_PASSWORD = 'workconnect2026';
 const API = 'https://workconnect-backend-i80m.onrender.com';
+const TOKEN_KEY = 'workconnect_admin_token';
 
 function Admin() {
-  const [authenticated, setAuthenticated] = useState(false);
-  const [passwordInput, setPasswordInput] = useState('');
+  const [token, setToken] = useState(() => localStorage.getItem(TOKEN_KEY) || '');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState('');
+  const [loggingIn, setLoggingIn] = useState(false);
   const [jobs, setJobs] = useState([]);
   const [workers, setWorkers] = useState([]);
   const [activeTab, setActiveTab] = useState('jobs');
   const [loading, setLoading] = useState(false);
   const [newWorker, setNewWorker] = useState({ name: '', phone: '', service: '', area: '' });
 
-  function handleLogin(e) {
-    e.preventDefault();
-    if (passwordInput === ADMIN_PASSWORD) setAuthenticated(true);
-    else alert('Incorrect password');
+  const authHeaders = { headers: { Authorization: `Bearer ${token}` } };
+
+  function logout() {
+    localStorage.removeItem(TOKEN_KEY);
+    setToken('');
   }
 
-  useEffect(() => {
-    if (authenticated) fetchData();
-  }, [authenticated]);
+  // Wraps admin API calls: on 401/403 (bad/expired token) it logs the admin out
+  // instead of leaving them stuck on a broken screen.
+  const withAuth = useCallback(async (fn) => {
+    try {
+      return await fn();
+    } catch (err) {
+      if (err.response && (err.response.status === 401 || err.response.status === 403)) {
+        logout();
+        alert('Your session expired. Please log in again.');
+      }
+      throw err;
+    }
+  }, []);
 
-  async function fetchData() {
+  async function handleLogin(e) {
+    e.preventDefault();
+    setLoginError('');
+    setLoggingIn(true);
+    try {
+      const res = await axios.post(`${API}/api/auth/admin-login`, { email, password });
+      localStorage.setItem(TOKEN_KEY, res.data.token);
+      setToken(res.data.token);
+      setPassword('');
+    } catch (err) {
+      setLoginError(err.response?.data?.error || 'Login failed. Please try again.');
+    } finally {
+      setLoggingIn(false);
+    }
+  }
+
+  const fetchData = useCallback(async () => {
     setLoading(true);
     try {
-      const [jobsRes, workersRes] = await Promise.all([
-        axios.get(`${API}/api/admin/jobs`),
-        axios.get(`${API}/api/admin/workers`),
-      ]);
-      setJobs(jobsRes.data);
-      setWorkers(workersRes.data);
+      await withAuth(async () => {
+        const [jobsRes, workersRes] = await Promise.all([
+          axios.get(`${API}/api/admin/jobs`, authHeaders),
+          axios.get(`${API}/api/admin/workers`, authHeaders),
+        ]);
+        setJobs(jobsRes.data);
+        setWorkers(workersRes.data);
+      });
     } catch (err) {
       console.error(err);
     } finally {
       setLoading(false);
     }
-  }
+  }, [token, withAuth]);
+
+  useEffect(() => {
+    if (token) fetchData();
+  }, [token, fetchData]);
 
   async function handleAddWorker(e) {
     e.preventDefault();
     try {
+      // Worker creation isn't an admin-only route on the backend (workers self-register
+      // too), so this call doesn't need the admin token.
       await axios.post(`${API}/api/workers`, newWorker);
       setNewWorker({ name: '', phone: '', service: '', area: '' });
       fetchData();
@@ -53,7 +91,7 @@ function Admin() {
   async function handleDeleteJob(jobId) {
     if (!confirm('Delete this job permanently?')) return;
     try {
-      await axios.delete(`${API}/api/admin/jobs/${jobId}`);
+      await withAuth(() => axios.delete(`${API}/api/admin/jobs/${jobId}`, authHeaders));
       setJobs(jobs.filter(j => j._id !== jobId));
     } catch (err) {
       alert('Failed to delete job');
@@ -63,7 +101,7 @@ function Admin() {
   async function handleResetJob(jobId) {
     if (!confirm('Reset this job back to open? This removes the current claim.')) return;
     try {
-      const res = await axios.patch(`${API}/api/admin/jobs/${jobId}/reset`);
+      const res = await withAuth(() => axios.patch(`${API}/api/admin/jobs/${jobId}/reset`, {}, authHeaders));
       setJobs(jobs.map(j => j._id === jobId ? res.data : j));
     } catch (err) {
       alert('Failed to reset job');
@@ -73,25 +111,38 @@ function Admin() {
   async function handleDeleteWorker(workerId) {
     if (!confirm('Delete this worker permanently?')) return;
     try {
-      await axios.delete(`${API}/api/admin/workers/${workerId}`);
+      await withAuth(() => axios.delete(`${API}/api/admin/workers/${workerId}`, authHeaders));
       setWorkers(workers.filter(w => w._id !== workerId));
     } catch (err) {
       alert('Failed to delete worker');
     }
   }
 
-  if (!authenticated) {
+  if (!token) {
     return (
       <section className="admin-login">
         <form onSubmit={handleLogin}>
           <h2>Admin Access</h2>
           <input
-            type="password"
-            placeholder="Enter admin password"
-            value={passwordInput}
-            onChange={(e) => setPasswordInput(e.target.value)}
+            type="email"
+            placeholder="Admin email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            autoComplete="username"
+            required
           />
-          <button type="submit" className="btn-primary">Enter</button>
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            autoComplete="current-password"
+            required
+          />
+          {loginError && <p className="admin-login-error">{loginError}</p>}
+          <button type="submit" className="btn-primary" disabled={loggingIn}>
+            {loggingIn ? 'Logging in...' : 'Enter'}
+          </button>
         </form>
       </section>
     );
@@ -115,6 +166,7 @@ function Admin() {
             <p>Registered Workers</p>
           </div>
         </div>
+        <button className="admin-logout" onClick={logout}>Log out</button>
       </div>
 
       <div className="admin-tabs">
