@@ -211,6 +211,7 @@ nav {
 .service-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
 
 .service-icon {
     font-size: 40px;
@@ -1694,5 +1695,4 @@ nav {
     .admin-login form {
         animation: none;
     }
-}
 }
