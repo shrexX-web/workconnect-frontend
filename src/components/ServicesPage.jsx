@@ -1,6 +1,8 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function ServicesPage() {
+  const navigate = useNavigate();
+
   const services = [
     { icon: "🔧", name: "Plumbing", slug: "plumbing", desc: "Leaks, installations, pipe repairs, and emergency fixes handled fast by licensed plumbers." },
     { icon: "💡", name: "Electrical", slug: "electrical", desc: "Wiring, fixture installs, panel upgrades, and safety inspections by certified electricians." },
@@ -19,11 +21,20 @@ function ServicesPage() {
       </div>
       <div className="services-page-grid">
         {services.map((service, index) => (
-          <div className="service-page-card" key={index}>
+          <div
+            className="service-page-card"
+            key={index}
+            role="button"
+            tabIndex={0}
+            onClick={() => navigate(`/workers/${service.slug}`)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') navigate(`/workers/${service.slug}`);
+            }}
+          >
             <div className="service-icon">{service.icon}</div>
             <h3>{service.name}</h3>
             <p>{service.desc}</p>
-            <Link to={`/workers/${service.slug}`} className="service-link">Get a Quote →</Link>
+            <span className="service-link">Get a Quote →</span>
           </div>
         ))}
       </div>

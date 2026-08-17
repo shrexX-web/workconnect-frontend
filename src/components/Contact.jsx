@@ -37,6 +37,19 @@ function Contact() {
             <button type="submit" className="btn-primary">Send Message</button>
           </form>
         </div>
+
+        <div className="contact-map">
+          <iframe
+            title="WorkConnect location"
+            src="https://www.google.com/maps?q=Pune,+Maharashtra,+India&output=embed"
+            width="100%"
+            height="350"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
       </section>
     );
   }

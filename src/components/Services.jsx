@@ -1,44 +1,43 @@
+import { useNavigate } from 'react-router-dom';
+
 function Services() {
-    return (
-      <section className="services">
-        <div className="services-header">
-          <h6>Our Services</h6>
-          <h2>What Are You Looking For?</h2>
-        </div>
-        <div className="services-grid">
-          <div className="service-card">
-            <div className="service-icon">🔧</div>
-            <h3>Plumbing</h3>
-            <p>Leaks, installations, and repairs handled fast.</p>
+  const navigate = useNavigate();
+
+  const services = [
+    { icon: "🔧", name: "Plumbing", slug: "plumbing", desc: "Leaks, installations, and repairs handled fast." },
+    { icon: "💡", name: "Electrical", slug: "electrical", desc: "Wiring, fixtures, and safety checks by pros." },
+    { icon: "🎨", name: "Painting", slug: "painting", desc: "Interior and exterior painting, done right." },
+    { icon: "🪚", name: "Carpentry", slug: "carpentry", desc: "Custom furniture, repairs, and installations." },
+    { icon: "🧹", name: "Cleaning", slug: "cleaning", desc: "Deep cleaning for homes and offices." },
+    { icon: "❄️", name: "AC Repair", slug: "ac-repair", desc: "Installation, servicing, and gas refills." },
+  ];
+
+  return (
+    <section className="services">
+      <div className="services-header">
+        <h6>Our Services</h6>
+        <h2>What Are You Looking For?</h2>
+      </div>
+      <div className="services-grid">
+        {services.map((service, index) => (
+          <div
+            className="service-card"
+            key={index}
+            role="button"
+            tabIndex={0}
+            onClick={() => navigate(`/workers/${service.slug}`)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') navigate(`/workers/${service.slug}`);
+            }}
+          >
+            <div className="service-icon">{service.icon}</div>
+            <h3>{service.name}</h3>
+            <p>{service.desc}</p>
           </div>
-          <div className="service-card">
-            <div className="service-icon">💡</div>
-            <h3>Electrical</h3>
-            <p>Wiring, fixtures, and safety checks by pros.</p>
-          </div>
-          <div className="service-card">
-            <div className="service-icon">🎨</div>
-            <h3>Painting</h3>
-            <p>Interior and exterior painting, done right.</p>
-          </div>
-          <div className="service-card">
-            <div className="service-icon">🪚</div>
-            <h3>Carpentry</h3>
-            <p>Custom furniture, repairs, and installations.</p>
-          </div>
-          <div className="service-card">
-            <div className="service-icon">🧹</div>
-            <h3>Cleaning</h3>
-            <p>Deep cleaning for homes and offices.</p>
-          </div>
-          <div className="service-card">
-            <div className="service-icon">❄️</div>
-            <h3>AC Repair</h3>
-            <p>Installation, servicing, and gas refills.</p>
-          </div>
-        </div>
-      </section>
-    );
-  }
-  
-  export default Services;
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export default Services;

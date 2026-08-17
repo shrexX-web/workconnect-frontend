@@ -116,7 +116,7 @@ nav {
 }
 
 .why-us-content {
-    max-width: 700px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -138,10 +138,9 @@ nav {
 }
 
 .checklist {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
 }
 
 .check-item {
@@ -149,13 +148,15 @@ nav {
     align-items: center;
     gap: 10px;
     background: 	var(--color-surface);
-    padding: 15px 20px;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
+    padding: 18px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .check-item:hover {
     transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 .check-item span {
@@ -198,13 +199,18 @@ nav {
     padding: 40px 25px;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
 }
 
 .service-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
 
 .service-icon {
     font-size: 40px;
@@ -531,12 +537,18 @@ nav {
     padding: 35px 20px;
     border-radius: 10px;
     text-align: center;
+    cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .service-page-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.service-page-card:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
 }
 
 .service-page-card .service-icon {
@@ -601,6 +613,17 @@ nav {
     display: flex;
     flex-wrap: wrap;
     gap: 50px;
+}
+
+.contact-map {
+    margin-top: 50px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.contact-map iframe {
+    display: block;
 }
 
 .contact-info {
@@ -683,10 +706,8 @@ nav {
     }
 
     .checklist {
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: 1fr;
     }
-
     .services-grid,
     .services-page-grid {
         grid-template-columns: 1fr;
@@ -1416,8 +1437,14 @@ nav {
     padding: 22px;
     border-radius: 12px;
     border: 1px solid var(--color-border);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.community-post:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
 .community-post-header {
     display: flex;
     align-items: center;
@@ -1544,4 +1571,134 @@ nav {
 
 .admin-action-link.danger {
     color: #dc2626;
+}
+
+/* ==========================================================================
+   Entrance animations
+   Minimal fade + slight upward slide on page load, staggered across cards.
+   Disabled entirely for people who prefer reduced motion.
+   ========================================================================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero,
+.why-us,
+.services,
+.post-job,
+.testimonials,
+.about-page,
+.services-page,
+.contact-page,
+.partner-hero,
+.partner-page,
+.community-page,
+.admin-login,
+.admin-page,
+.dashboard-page,
+.workerlist-page {
+    animation: fadeInUp 0.6s ease-out both;
+}
+
+/* Gentle cascade for sections stacked on the homepage */
+.why-us { animation-delay: 0.05s; }
+.services { animation-delay: 0.1s; }
+.post-job { animation-delay: 0.15s; }
+.testimonials { animation-delay: 0.2s; }
+
+/* Staggered card entrances within grids */
+.services-grid .service-card,
+.services-page-grid .service-page-card,
+.checklist .check-item,
+.testimonials-grid .testimonial-card,
+.community-feed .community-post,
+.admin-stats .admin-stat-box {
+    animation: fadeInUp 0.5s ease-out both;
+}
+
+.services-grid .service-card:nth-child(1),
+.services-page-grid .service-page-card:nth-child(1),
+.checklist .check-item:nth-child(1),
+.testimonials-grid .testimonial-card:nth-child(1),
+.community-feed .community-post:nth-child(1),
+.admin-stats .admin-stat-box:nth-child(1) { animation-delay: 0.05s; }
+
+.services-grid .service-card:nth-child(2),
+.services-page-grid .service-page-card:nth-child(2),
+.checklist .check-item:nth-child(2),
+.testimonials-grid .testimonial-card:nth-child(2),
+.community-feed .community-post:nth-child(2),
+.admin-stats .admin-stat-box:nth-child(2) { animation-delay: 0.1s; }
+
+.services-grid .service-card:nth-child(3),
+.services-page-grid .service-page-card:nth-child(3),
+.checklist .check-item:nth-child(3),
+.testimonials-grid .testimonial-card:nth-child(3),
+.community-feed .community-post:nth-child(3),
+.admin-stats .admin-stat-box:nth-child(3) { animation-delay: 0.15s; }
+
+.services-grid .service-card:nth-child(4),
+.services-page-grid .service-page-card:nth-child(4),
+.community-feed .community-post:nth-child(4) { animation-delay: 0.2s; }
+
+.services-grid .service-card:nth-child(5),
+.services-page-grid .service-page-card:nth-child(5),
+.community-feed .community-post:nth-child(5) { animation-delay: 0.25s; }
+
+.services-grid .service-card:nth-child(6),
+.services-page-grid .service-page-card:nth-child(6),
+.community-feed .community-post:nth-child(6) { animation-delay: 0.3s; }
+
+/* Admin table rows ease in row by row */
+.admin-table tbody tr {
+    animation: fadeInUp 0.4s ease-out both;
+}
+
+.admin-table tbody tr:nth-child(1) { animation-delay: 0.03s; }
+.admin-table tbody tr:nth-child(2) { animation-delay: 0.06s; }
+.admin-table tbody tr:nth-child(3) { animation-delay: 0.09s; }
+.admin-table tbody tr:nth-child(4) { animation-delay: 0.12s; }
+.admin-table tbody tr:nth-child(5) { animation-delay: 0.15s; }
+.admin-table tbody tr:nth-child(n+6) { animation-delay: 0.18s; }
+
+/* Admin login card gets its own gentle entrance */
+.admin-login form {
+    animation: fadeInUp 0.5s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero,
+    .why-us,
+    .services,
+    .post-job,
+    .testimonials,
+    .about-page,
+    .services-page,
+    .contact-page,
+    .partner-hero,
+    .partner-page,
+    .community-page,
+    .admin-login,
+    .admin-page,
+    .dashboard-page,
+    .workerlist-page,
+    .services-grid .service-card,
+    .services-page-grid .service-page-card,
+    .checklist .check-item,
+    .testimonials-grid .testimonial-card,
+    .community-feed .community-post,
+    .admin-stats .admin-stat-box,
+    .admin-table tbody tr,
+    .admin-login form {
+        animation: none;
+    }
+}
 }
