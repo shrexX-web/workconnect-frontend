@@ -1573,12 +1573,6 @@ nav {
     color: #dc2626;
 }
 
-/* ==========================================================================
-   Entrance animations
-   Minimal fade + slight upward slide on page load, staggered across cards.
-   Disabled entirely for people who prefer reduced motion.
-   ========================================================================== */
-
 @keyframes fadeInUp {
     from {
         opacity: 0;
