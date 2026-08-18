@@ -37,6 +37,15 @@ nav {
     color: white;
     font-size: 24px;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-mark {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
 }
 
 .nav-links {

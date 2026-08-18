@@ -31,9 +31,9 @@ function Partner() {
   return (
     <section className="partner-page">
       <div className="partner-hero">
-        <h6>WorkConnect Partner</h6>
+        <h6>Fixado Partner</h6>
         <h1>Get Jobs Near You. Get Paid. Build Your Reputation.</h1>
-        <p>Join thousands of skilled professionals earning through WorkConnect. No fees to join — just real customers looking for real work.</p>
+        <p>Join thousands of skilled professionals earning through Fixado. No fees to join — just real customers looking for real work.</p>
       </div>
 
       <div className="partner-benefits">

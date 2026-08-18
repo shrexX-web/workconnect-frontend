@@ -5,7 +5,7 @@ function Hero() {
   return (
     <section className="hero" style={{ backgroundImage: `linear-gradient(rgba(15,23,42,0.75), rgba(15,23,42,0.75)), url(${heroImage})` }}>
       <div className="hero-content">
-        <h5>Welcome to WorkConnect</h5>
+        <h5>Welcome to Fixado</h5>
         <h1>Find Trusted Local Service Professionals, Instantly</h1>
         <p>Post a job, get quotes from verified workers nearby, and hire with confidence.</p>
         <div className="hero-buttons">

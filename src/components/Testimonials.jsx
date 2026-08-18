@@ -24,7 +24,7 @@ function Testimonials() {
             <p>"As a painter, this app brings me way more local jobs than I used to get through word of mouth."</p>
             <div className="testimonial-author">
               <h4>Rohan Deshmukh</h4>
-              <span>Painter, WorkConnect Pro</span>
+              <span>Painter, Fixado Pro</span>
             </div>
           </div>
         </div>

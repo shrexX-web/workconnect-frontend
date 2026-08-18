@@ -19,7 +19,7 @@ function Contact() {
             </div>
             <div className="info-item">
               <h4>✉️ Email</h4>
-              <p>support@workconnect.com</p>
+              <p>support@fixado.com</p>
             </div>
             <div className="info-item">
               <h4>🕒 Hours</h4>
@@ -40,7 +40,7 @@ function Contact() {
 
         <div className="contact-map">
           <iframe
-            title="WorkConnect location"
+            title="Fixado location"
             src="https://www.google.com/maps?q=Pune,+Maharashtra,+India&output=embed"
             width="100%"
             height="350"

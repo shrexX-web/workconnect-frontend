@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="fixadoGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#fixadoGrad)"/>
+  <path d="M22 46V21.5C22 19.0147 24.0147 17 26.5 17H42V22.5H27.5V29H40V34.5H27.5V46H22Z" fill="#ffffff"/>
+</svg>

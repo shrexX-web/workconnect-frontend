@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom';
 function Navbar() {
   return (
     <nav>
-      <div className="logo">WorkConnect</div>
+      <div className="logo">
+        <img src="/logo.svg" alt="Fixado" className="logo-mark" />
+        Fixado
+      </div>
       <ul className="nav-links">
         <li><Link to="/">Home</Link></li>
         <li><Link to="/about">About</Link></li>
